@@ -84,7 +84,9 @@ let displayResults = function(teams, where, teamsArray) {
 addCopyListener();
 
 form.addEventListener( "submit", function( event ) { 
-
+	  
+	  document.getElementById("submit").style.display="none";
+	  
 	  event.preventDefault();
 	  
 	  const query = 'input[name="teams-members"]:checked';
