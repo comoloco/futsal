@@ -24,7 +24,7 @@ body {
 
 p {
   font-family: Thasadith, sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   margin: 0
 }
 
@@ -198,4 +198,15 @@ canvas {
 .finalteams:not(:empty) + .copy  {
   visibility: visible;
   opacity: 1;
+}
+
+input.text {
+  width: 500px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
 }

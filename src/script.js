@@ -83,12 +83,27 @@ let displayResults = function(teams, where, teamsArray) {
 
 addCopyListener();
 
-form.addEventListener( "submit", function( event ) {  
-  event.preventDefault();
-  const namesArray = toArray( teamMembersTextarea.value );
-  const teamsArray = toArray( teamLabelsTextarea.value );
-  const teams = lottery( namesArray, teamsArray );
-  displayResults( teams, document.getElementById("finalteams"), teamsArray );
+form.addEventListener( "submit", function( event ) { 
+	  
+	  document.getElementById("submit").style.display="none";
+	  
+	  event.preventDefault();
+	  
+	  const query = 'input[name="teams-members"]:checked';
+	  const selectedEls = document.querySelectorAll(query);
+	  
+	  // 선택된 목록에서 value 찾기
+	  let result = '';
+	  selectedEls.forEach((el) => {
+		result += el.value + ', ';
+	  });
+	  result = result.replace(/,\s*$/, '');
+	  
+	  const namesArray = toArray( result );
+	  const teamsArray = toArray( teamLabelsTextarea.value );
+	  const teams = lottery( namesArray, teamsArray );
+	  displayResults( teams, document.getElementById("finalteams"), teamsArray );
+
 });
 
 
@@ -194,5 +209,17 @@ function Ball() {
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
+
+function check(box){
+	
+	var id = box.id+"-div";
+	
+		if(box.checked == true){
+			document.getElementById(id).style.backgroundColor="#FF9966";
+		
+		}else{
+			document.getElementById(id).style.backgroundColor="#004A";
+		}
+}
 
 mainLoop();
